@@ -45,7 +45,7 @@ namespace GerenTarefas.Controllers
                     });
                 }
 
-                var usuarioTeste = new Usuario()
+                var usuarioTeste = new Usuarios()
                 {
                     Id = 1,
                     Nome = "Usuário de Teste",

@@ -12,7 +12,7 @@ namespace GerenTarefas.Services
 {
     public class TokenService
     { // Criar token  de segurança
-        public static string CriarToken(Usuario usuario)
+        public static string CriarToken(Usuarios usuario)
         {
             var tokenHandler = new JwtSecurityTokenHandler();
             var chaveCriptografiaEmBytes = Encoding.ASCII.GetBytes(ChaveJWT.ChaveSecreta);
