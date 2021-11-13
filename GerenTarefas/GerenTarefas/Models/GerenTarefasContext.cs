@@ -14,5 +14,6 @@ namespace GerenTarefas.Models
         }
 
         public DbSet<Usuarios> Usuarios { get; set; }
+        public DbSet<Tarefa> Tarefa { get; set; }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace GerenTarefas.Models
@@ -12,5 +13,7 @@ namespace GerenTarefas.Models
         public string Email { get; set; }
         public string Senha { get; set; }
 
+        [JsonIgnore]
+        public virtual ICollection<Tarefa> Tarefas { get; private set; }
     }
 }

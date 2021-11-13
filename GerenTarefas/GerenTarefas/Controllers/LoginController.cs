@@ -19,15 +19,12 @@ namespace GerenTarefas.Controllers
     public class LoginController : BaseController
     {
         private readonly ILogger<LoginController> _logger;
-        private readonly IUsuarioRepository _usuarioRepository;
 
 
         public LoginController(ILogger<LoginController> logger,
-            IUsuarioRepository usuarioRepository)
+            IUsuarioRepository usuarioRepository) : base(usuarioRepository)
         {
             _logger = logger;
-            _usuarioRepository = usuarioRepository;
-
         }
 
         [HttpPost]
@@ -48,8 +45,7 @@ namespace GerenTarefas.Controllers
                 }
 
                 var usuario = _usuarioRepository.GetUsuarioByLoginSenha(requisicao.Login, MD5Utils.GerarHashMD5(requisicao.Senha));
-
-                if(usuario == null)
+                if (usuario == null)
                 {
                     return BadRequest(new ErroRespostaDto()
                     {
@@ -60,11 +56,12 @@ namespace GerenTarefas.Controllers
 
                 var token = TokenService.CriarToken(usuario);
 
-                return Ok(new LoginRespostaDto() {
+                return Ok(new LoginRespostaDto()
+                {
                     Email = usuario.Email,
                     Nome = usuario.Nome,
                     Token = token
-                    });
+                });
             }
             catch (Exception excecao)
             {
